@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+<head>
+    <title>КП3-Мироненко-КМ82</title>
+     <style>
+     .cont{
+        background: #ffffff;
+        border: 4px double black;
+        text-align: center;
+     }
+     .container{
+        font-size: 200%;
+        border: 4px double black; /* Параметры границы */
+        background: #123e1b; /* Цвет фона */
+        padding: 10px; /* Поля вокруг текста */
+      }
+    .container2{
+        text-align: left;
+    }
+    .container3{
+        text-align: left;
+    }
+    </style>
+</head>
+<body>
+<div class='cont'>
+    <div class='container'><span><font color="#ffffff">Тут, Ви можете ввести дані про команду та гравця.</font></span></div>
+        <div class = '123'>
+            <h1>Інормація про команду</h1>
+            <form action="{{ url_for('index') }}" method="post">
+                <div>
+                    <p>
+                        <label> Напишіть назву команди --- </label>
+                        <input type="text" name="name_team" class="form-control" placeholder="назва команди">                    
+                        <label> Напишіть місто, яке представляє команда --- </label>
+                        <input type="text" name="place_team" class="form-control" placeholder="місто">
+                    </p>
+                    <p>
+                        <input type="submit" class="btn btn-success" value="Підтвердити">
+                    </p>
+                     </div>
+                </form>
+            </div>
+        <div>
+            <hr>
+            <label>Список команд</label>
+            <div class="container2">
+                 {% for post in team_posts %}
+                    <p>
+                        <em>{{ post.name }}</em>
+                        <em>{{ post.place }}</em>
+                        <a href='/delete_team/{{post.name}}'>
+                            <button ctype="button" class="btn btn-success">Видалити</button></a>
+                    </p>
+                 {% endfor %}
+            </div>
+        </div>
+       <hr>
+        <div>
+            <h1>Інормація про гравця</h1>
+            <form action="{{ url_for('index') }}" method="post">
+                <div class="form-group">
+                    <p>
+                        <label> Напишіть призвіще гравця --- </label>
+                        <input type="text" name="name_player" class="form-control" placeholder="призвіще">
+                        <label> Напищіть вік гравця --- </label>
+                        <input type="text" name="year_player" class="form-control" placeholder="вік">
+                        <label> Напишіть за яку команду виступає гравець ---</label>
+                        <input type="text" name="team_player" class="form-control" placeholder="команда">
+                    </p>
+                    <p>
+                        <input type="submit" class="btn btn-success" value="Підтвердити">
+                    </p>
+                </div>
+            </form>
+            <hr>
+            <label>Список гравців</label>
+        </div>
+        <div class="container3">
+            {% for post in player_posts %}
+            <p>
+                <em>{{ post.name }}</em>---<em>{{ post.year }}</em>---<em>{{ post.team }}</em>
+                <a href='/delete_player/{{post.id}}'><button ctype="button" class="btn btn-success">DELETE</button></a>
+            </p>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
