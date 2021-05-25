@@ -18,5 +18,7 @@ ____
 
 ---- 
 
-Також, додаток можна запустити на локальному сервері, для цього у файлі *app.py* строчку `app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL').replace("postgres", "postgresql")` замінити наступним:`app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://username:password@localhost:port/bdname'`
+Також, додаток можна запустити на локальному сервері. 
+Для цього у файлі *app.py* строчку `app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL').replace("postgres", "postgresql")` 
+замінити наступним:`app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://username:password@localhost:port/bdname'`
 
